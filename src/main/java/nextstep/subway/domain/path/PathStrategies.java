@@ -7,8 +7,8 @@ import java.util.function.Function;
 
 public enum PathStrategies {
 
-    DISTANCE("DISTANCE", section -> section.getDistance()),
-    DURATION("DURATION",section -> section.getDuration());
+    DISTANCE("DISTANCE", Section::getDistance),
+    DURATION("DURATION", Section::getDuration);
 
     private String type;
     private Function<Section, Integer> function;

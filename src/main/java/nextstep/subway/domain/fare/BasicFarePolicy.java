@@ -8,8 +8,23 @@ public class BasicFarePolicy implements FarePolicy {
     private static final int FIFTY = 50;
     private static final int TEN = 10;
 
+    private Target target;
+
+    public BasicFarePolicy() {
+
+    }
+
+    public BasicFarePolicy(Target target) {
+        this.target = target;
+    }
+
+    public Target getTarget() {
+        return this.target;
+    }
+
     @Override
-    public long calculateOverFare(Sections sections) {
+    public long calculateOverFare(Target target, long fare) {
+        Sections sections = (Sections) target;
         int distance = sections.totalDistance();
         return calculateOverFare(distance);
     }

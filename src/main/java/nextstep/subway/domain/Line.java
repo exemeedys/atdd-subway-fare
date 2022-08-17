@@ -66,4 +66,8 @@ public class Line {
     public void deleteSection(Station station) {
         sections.delete(station);
     }
+
+    public boolean canAddSection(Long upStationId, Long downStationId, int distance, int duration) {
+        return upStationId != null && downStationId != null && distance != 0 && duration != 0;
+    }
 }

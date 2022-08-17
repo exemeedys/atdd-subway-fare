@@ -8,10 +8,22 @@ import java.util.Comparator;
 import java.util.List;
 
 public class AdditionalFarePolicy implements FarePolicy {
+
+    private Target target;
+
+    public AdditionalFarePolicy(Target target) {
+        this.target = target;
+    }
+
+    public Target getTarget() {
+        return this.target;
+    }
+
     @Override
-    public long calculateOverFare(Sections sections) {
+    public long calculateOverFare(Target target, long fare) {
+        Sections sections = (Sections) target;
         List<Section> findSections = sections.getSections();
-        return findSections.stream()
+        return fare + findSections.stream()
                 .map(s -> s.getLine())
                 .distinct()
                 .map(l -> l.getFare().getValue())
